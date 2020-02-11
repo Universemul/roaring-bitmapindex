@@ -1,20 +1,26 @@
+mod inherent;
+
 use std::collections::HashMap;
 
 const BITMAP_LENGTH: usize = 1024;
 
 pub type Bitmap = Box<[u64; BITMAP_LENGTH]>;
+pub type Key = String;
 
-pub struct BitmapIndex {
+pub struct Field {
     pub len: u64, // Define the number of keys inside data
-    pub data: HashMap<String, Bitmap>
+    pub data: Bitmap
 }
 
-/*
-Method that must be implemented: 
- - Insert => Insert value at the end
- - Update
- - Delete (set bool to false)
- - Get => Get the value at a specific index
- - Return the list of value True for a specific key
+pub struct BitmapIndex {
+    pub items: HashMap<u64, Field>
+}  
 
+/*
+e.g => BitmapIndex on a field called "Job"
+key is the id of my document, value 
+let b_index = BitmapIndex::new();
+b_index.insert(key: 123, value: "Developer");
+b_index.remove(key: 123, value: "Developer");
+b_index.contains(value: "Developer"); => Must return all document wtih the job "Developer"
 */
