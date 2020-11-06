@@ -2,7 +2,7 @@ mod inherent;
 
 use std::collections::HashMap;
 
-const BITMAP_LENGTH: usize = 1024;
+const BITMAP_LENGTH: usize = 4096;
 
 pub type Bitmap = Box<[u64; BITMAP_LENGTH]>;
 pub type Key = String;
